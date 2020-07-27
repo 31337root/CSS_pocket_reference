@@ -1,0 +1,77 @@
+*** Basic concepts ***
+
+Adding styles to HTML
+
+  Inline Styles
+    <p style="color: red; background: yellow;">Look out!
+    This tect is aalarmingly presented!</p>
+  Embedded Stylesheets
+    (Sometimes embedded at the end of the docuemtn for performance reasons.)
+    <html>
+      <head>
+        <title>Stylin' !</title>
+        <style type="text/css">
+          h1 {color: putple;}
+          p {font-size: smaller; color: gray;}
+        </style>
+      </head>
+        ...
+    </html>
+  External Stylesheets
+    An external sytlesheet can be referenced in threee ways.
+    1. @import directive
+    (Note that @import directives can appear only at the top, and one stylesheet could 
+    import another, wich in turn would import a third.)
+      <head>
+        <title>My  document</title>
+        <style type="text/css">
+          @import url(site.css);
+          @import url(navbar.css);
+          @import url(footer.css) screen and (min-width: 960px);
+          body {background: yellow;}
+        </style>
+      </head>
+    2. Link element
+    (Multiple link elements are permitted, the media attribute can be used to restrict a 
+    stylesheet to one or more media environments. Most or all known user agents load all
+    linked stylesheets, regardless of whether the user ever needs them.)
+      <head>
+        <title>a Document</title>
+        <link rel="stylesheet" type="text/css" href="basic.css" media="all">
+        <link rel="stylesheet" type="text/css" href="web.css"
+          media="screen and (max-width: 960px)">
+        <link rel="stylesheet" type="text/css" href="paper.css"
+          media="print and (color-depth: 2)">
+      </head>
+    3. xml-stylesheets processing instruction
+    (Any xml-stylesheet processisng instructions must be placed in the prolog of an XML
+    document. Multiple xml-stylesheet processing instructions are permitted.)
+      <?xml-stylesheet type="text/css" href="basic.css"
+        media="all"?>
+      <?xml-stylesheet type="text/css" href="web.css"
+        media="screen"?>
+      <?xml-stylesheet type="text/css" href="paper.css"
+        media="print"?> 
+
+  At-rules
+    A CSS at-rule sia statement or block of rules that begins with a specific indentifier
+    preceded by an @ sign.
+    @charset
+    @import
+      (Any @import rules must appear before all other parts  of the sstylesheet exept for
+      @charset)
+    @namespace
+      (Allow an author to define an XML namespace to be used in selectors, multiple 
+      @namespace rules are permitted. Any @namespace must appear before all other parts
+      of the stylesheeet except for @charset and @import rules.)
+        @namespace svg url(http://www.w3.org/2000/svg);
+    Besides these statements, there are a number of conditional at-rules
+    @counter-style
+    @font-face
+    @keyframes
+    @media
+    @supports
+    @document
+    @font-feature-values
+    @page
+    @viewport
